@@ -1,1 +1,2 @@
 # Sredojevic_2270_FinalProject
+My project is intended to transfer a queued message between cities. Depending on how many cities the messages goes through will cost a certain number of "points".  If your distance goes over this number of points, parts of the message are lost.  You can earn more points to send messages by doing a mini-game of sorts that may or may not be related to another form of Data Structure.
