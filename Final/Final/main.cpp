@@ -18,7 +18,8 @@ int main()
         cout<<"2. Edit message"<<endl;
         cout<<"3. Print Message, Location and Sending Points"<<endl;
         cout<<"4. Play for Points"<<endl;
-        cout<<"5. Quit"<<endl;
+        cout<<"5. Add City to the Network"<<endl;
+        cout<<"6. Quit"<<endl;
         cin>>select;
 
 
@@ -153,7 +154,17 @@ int main()
             }
         }
 
-        if(select==5){
+        if (select==5){
+            string previousCity, newCity;
+            int pd, nd;
+            cin.ignore();
+            cout<<"Enter a city name: "<<endl;
+            getline(cin,newCity);
+            cout<<"Enter a previous city name (Enter 'First' if it will be the first city in the list) "<<endl;
+            getline(std::cin, previousCity);
+            running.addCity(newCity,previousCity);
+        }
+        if(select==6){
             start= false;
         }
     }

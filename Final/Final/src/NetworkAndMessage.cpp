@@ -148,6 +148,66 @@ bool NetworkAndMessage::searchNetwork(string cityN){
     return true;
 }
 
+// Here is the contribution (functionality to add a city, default prev and next distance is 2).
+void NetworkAndMessage::addCity(string newCity, string previousCity)
+{
+    int dist = 2;
+    city *temp = new city;
+    temp -> next = NULL;
+    temp -> previous = NULL;
+    city *left = findCity(previousCity);
+    // handles argument in case one wants to add a new head
+    if (previousCity == "First")
+    {
+        temp -> next = head;
+        temp -> previous = NULL;
+        temp -> Name = newCity;
+        head -> previous = temp;
+        head = temp;
+    }
+    // Case for the previous city entered is the tail
+    else if (left->next==NULL)
+    {
+        left -> next = temp;
+        left -> next -> previous = temp;
+        temp -> next = NULL;
+        temp -> previous = left;
+        temp -> message = " ";
+        temp -> Name = newCity;
+        left -> message = " ";
+        left -> Name = previousCity;
+        tail = temp;
+    }
+    // Case for adding node in the middle.
+    else if(left ->Name == previousCity)
+    {
+        temp -> next = left -> next;
+        left -> next -> previous = temp;
+        temp -> previous = left;
+        temp -> message = " ";
+        temp -> Name = newCity;
+        left -> next = temp;
+    }
+    temp -> ndist = dist;
+    temp -> pdist = dist;
+}
+
+// The private function required for my contribution
+city * NetworkAndMessage::findCity(string searchName)
+{
+    city * temp = head;
+    while(temp -> next != NULL)
+    {
+        if (temp -> Name == searchName)
+        {
+            return temp;
+        }
+        temp = temp -> next;
+    }
+    return NULL;
+}
+
+
 
 ///below are functions for the queue
 
@@ -417,7 +477,7 @@ bool NetworkAndMessage::multiplication(){
     }
 }
 
-bool NetworkAndMessage::divisoin(){
+bool NetworkAndMessage::division(){
     int a = (rand()%20+30);
     int b = (rand()%20+1)*3;
     int c = a*b;
@@ -451,7 +511,7 @@ void NetworkAndMessage::mediumMath(int x){
                 cout<<"Incorrect"<<endl;
             }
         }else{
-            correct=divisoin();
+            correct=division();
             number--;
             if(correct==true){
                 cout<<"Correct!"<<endl;

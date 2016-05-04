@@ -34,6 +34,7 @@ class NetworkAndMessage
         void printNetwork();
         void printCurrent();
         bool searchNetwork(string city);
+        void addCity(string newCity, string previousCity);
 
         //queue/message functions
         void buildQueue(int qs);
@@ -54,7 +55,7 @@ class NetworkAndMessage
 
         void mediumMath(int problems);
         bool multiplication();
-        bool divisoin();
+        bool division();
 
         void hardMath(int problems);
         bool solveForX();
@@ -71,6 +72,8 @@ class NetworkAndMessage
         int queueTail;
         int queueCount;
         string *arrayQueue;
+
+        city * findCity(string searchName);
 };
 
 #endif  // NETWORKANDMESSAGE_H
